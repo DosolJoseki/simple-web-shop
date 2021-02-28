@@ -1,0 +1,45 @@
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header" style="position: relative; height: 70px">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a th:text="#{sitename}" class="navbar-brand" href="/"/>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a th:text="#{nlink_home}" class="nav-link" href="/"/>
+                    </li>
+                    <li class="nav-item">
+                        <a th:text="#{nlink_shop}" class="nav-link" href="/goods"/>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                        <a th:text="#{add_new_good}" class="nav-link" href="/goods/add"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarButtons" style="margin-left: 20px">
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" th:value="#{button_sign_out}"/>
+                        </form>
+                    </li>
+                </div>
+                <div sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/login}" method="post">
+                            <input type="submit" th:value="#{button_sign_in}"/>
+                        </form>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</html>

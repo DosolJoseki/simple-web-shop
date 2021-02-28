@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title th:text="#{title_login}"/>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+</head>
+<body class="text-center">
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="container" style="position: relative">
+    <div th:if="${param.error}" th:text="#{error_message_invalid_user_name_or_password}"/>
+    <div th:if="${param.logout}" th:text="#{message_you_have_been_logged_out}"/>
+    <form th:action="@{/login}" method="post">
+        <div><input type="text" name="username" th:placeholder="#{input_field_username}"/></div>
+        <div><input type="password" name="password" th:placeholder="#{input_field_password}"/></div>
+        <div><input class="form-control mt-5" type="submit" th:value="#{button_sign_in}"/></div>
+    </form>
+
+    <a th:text="#{button_add_new_user}" class="nav-link" href="/registration"/>
+</div>
+
+<div th:insert="blocks/footer :: footer" style="margin-top: 10px"/>
+
+</body>
+</html>
+
