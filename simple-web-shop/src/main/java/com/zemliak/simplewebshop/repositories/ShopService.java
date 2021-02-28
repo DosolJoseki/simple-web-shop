@@ -28,7 +28,7 @@ public class ShopService implements IShopService {
 
     @Override
     public List<Good> getAllGoodsByLanguageTag(String languageTag) {
-        setTestData();
+        //setTestData();
 
         List<Good> goods = new ArrayList<>();
 
@@ -270,6 +270,50 @@ public class ShopService implements IShopService {
                         new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
                         new GoodsNameLocalization("Reebock of 4500", "ru"),
                         "ru"
+                ),
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fQj9M--NSiAH4wTfAKrfl_uGxL6chtmGEytMvWF9CKHQHo07zPcAvLDLPIqVm6vche5pGj_B&usqp=CAc"
+        ));
+
+        repository.save(new GoodDao(
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                        new GoodsNameLocalization("Reebock", "en"),
+                        "en"
+                ),
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsPriceLocalization>>(){}.getType(),
+                        new GoodsPriceLocalization(15, "en"),
+                        "en"
+                ),
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                        new GoodsNameLocalization("Reebock of 15", "en"),
+                        "en"
+                ),
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlzpaQa97DOs4uhsiXM5aLa5KkqfBzPSZ1-vJYVJHv0dOABUiMlObKsi4hhO2wbe4_5ctmdM&usqp=CAc"
+        ));
+
+        repository.save(new GoodDao(
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                        new GoodsNameLocalization("Reebock", "en"),
+                        "en"
+                ),
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsPriceLocalization>>(){}.getType(),
+                        new GoodsPriceLocalization(50, "en"),
+                        "en"
+                ),
+                setOrUpdatePropertyAndSetToJson(
+                        null,
+                        new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                        new GoodsNameLocalization("Reebock of 50", "en"),
+                        "en"
                 ),
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fQj9M--NSiAH4wTfAKrfl_uGxL6chtmGEytMvWF9CKHQHo07zPcAvLDLPIqVm6vche5pGj_B&usqp=CAc"
         ));
