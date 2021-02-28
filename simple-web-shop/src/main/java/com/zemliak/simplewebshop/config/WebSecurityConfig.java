@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/registration").not().fullyAuthenticated()
-                .antMatchers("/", "/goods", "/api/getAllGoods", "/api/findGoodsById").permitAll()
+                .antMatchers("/", "/goods", "/api/getAllGoodsByLanguageTag", "/api/findGoodsById").permitAll()
                 .antMatchers("/api/updateGoods", "/api/createGoods", "/api/deleteGoodById").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
