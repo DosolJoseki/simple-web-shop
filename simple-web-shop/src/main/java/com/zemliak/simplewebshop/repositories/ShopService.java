@@ -28,8 +28,6 @@ public class ShopService implements IShopService {
 
     @Override
     public List<Good> getAllGoodsByLanguageTag(String languageTag) {
-        //setTestData();
-
         List<Good> goods = new ArrayList<>();
 
         for (GoodDao dao: repository.findAll()) {
@@ -317,5 +315,22 @@ public class ShopService implements IShopService {
                 ),
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fQj9M--NSiAH4wTfAKrfl_uGxL6chtmGEytMvWF9CKHQHo07zPcAvLDLPIqVm6vche5pGj_B&usqp=CAc"
         ));
+    }
+
+    private void testUpdateDelete(){
+        List<GoodDao> daos = repository.findAll();
+
+        if(daos.size() < 2) {
+            return;
+        }
+
+        Good good = daoToGood(daos.get(0), "ru");
+        good.setName("new name");
+        good.setDescription("new description");
+        good.setPrice(100500);
+
+        updateGood(good, "ru");
+
+        deleteGoodById(daos.get(1).getId());
     }
 }
