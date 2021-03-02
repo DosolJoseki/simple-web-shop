@@ -26,7 +26,8 @@
 <header th:insert="blocks/header :: header"/>
 
 <div class="container" style="position: relative">
-    <div th:if="${param.error}" th:text="#{error_message_user_already_exists}"/>
+    <div th:if="${user_exists != null}" th:text="#{error_message_user_already_exists}"/>
+    <div th:if="${validation_failed != null}" th:text="#{error_message_user_validation_failed}"/>
     <form th:action="@{/registration}" method="post">
         <div><input type="text" name="username" th:placeholder="#{input_field_username}"/></div>
         <div><input type="password" name="password" th:placeholder="#{input_field_password}"/></div>

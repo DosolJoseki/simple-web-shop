@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,6 +37,14 @@ public class ShopController {
         model.addAttribute("goods", goods);
         model.addAttribute("title", messages.get("title_shop"));
         return "goods";
+    }
+
+    @GetMapping("/goods/{id}")
+    public String showGoodsById(Model model, @PathVariable(value = "id") Long id) {
+        Good goods = shopService.findGoodByIdAndLanguageTag(id, getRequestLocaleLanguage());
+        model.addAttribute("goods", goods);
+        model.addAttribute("title", messages.get("title_current_item"));
+        return "goods-description";
     }
 
     @GetMapping("/goods/add")

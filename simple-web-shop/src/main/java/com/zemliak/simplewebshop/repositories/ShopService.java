@@ -315,6 +315,37 @@ public class ShopService implements IShopService {
                 ),
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fQj9M--NSiAH4wTfAKrfl_uGxL6chtmGEytMvWF9CKHQHo07zPcAvLDLPIqVm6vche5pGj_B&usqp=CAc"
         ));
+
+
+        List<GoodDao> daos = repository.findAll();
+        GoodDao daoToUpdate = daos.get(0);
+        Good good = daoToGood(daoToUpdate, "ru");
+        good.setPrice(60);
+        good.setName("Reebock English");
+        good.setDescription("English desc");
+
+        daoToUpdate.setName(setOrUpdatePropertyAndSetToJson(
+                daoToUpdate.getName(),
+                new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                new GoodsNameLocalization("afafdasfasf", "en"),
+                "en"
+        ));
+
+        daoToUpdate.setPrice(setOrUpdatePropertyAndSetToJson(
+                daoToUpdate.getPrice(),
+                new TypeToken<ArrayList<GoodsPriceLocalization>>(){}.getType(),
+                new GoodsPriceLocalization(123113, "en"),
+                "en"
+        ));
+
+        daoToUpdate.setDescription(setOrUpdatePropertyAndSetToJson(
+                daoToUpdate.getDescription(),
+                new TypeToken<ArrayList<GoodsNameLocalization>>(){}.getType(),
+                new GoodsNameLocalization("asfasfaf ssdsfdvcv", "en"),
+                "en"
+        ));
+
+        repository.save(daoToUpdate);
     }
 
     private void testUpdateDelete(){

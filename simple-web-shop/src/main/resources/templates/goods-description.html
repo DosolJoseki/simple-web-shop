@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+
+<div class="card h-100 mb-5 mt-5">
+    <img class="card-img-top" th:src="${goods.pictureSource}" alt="" style="width: 400px; height:300px">
+    <div class="card-body">
+        <h4 class="card-title" th:text="${goods.name}"></h4>
+        <h5 th:text="${goods.price}"/>
+        <p class="card-text" th:text="${goods.description}"/>
+    </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"/>
+</body>
+</html>

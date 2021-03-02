@@ -33,10 +33,12 @@ public class RegistrationController {
     public String addUser(User user, Model model) {
         if (userService.isUserExists(user)) {
             System.out.println("User exists!");
-            model.addAttribute("message", messages.get("error_message_user_already_exists"));
+            model.addAttribute("user_exists", messages.get("error_message_user_already_exists"));
             return "/registration";
         } else {
             if(!isUserValidated(user)){
+                System.out.println("Validation failed!");
+                model.addAttribute("validation_failed", messages.get("error_message_user_validation_failed"));
                 return "/registration";
             }
 
